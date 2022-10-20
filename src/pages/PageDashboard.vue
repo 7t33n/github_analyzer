@@ -71,18 +71,24 @@ const onChangeMenu = (id: symbol) => activeItem.value = id;
 const onChangeRequestMenu = (id: symbol) => activeRequestItem.value = id;
 const onSortClick = (type: 'asc' | 'desc') => contributorsSortType.value = type;
 
-const getFormattedPullRequestList = (type: string) => {
+const getFormattedPullRequestList = (type: any) => {
   const { end, start } = query.value;
+  let result: IRepository[] = [];
   switch (type) {
     case 'closed':
-      return repositoryStore.getClosedPull(end, start);
+      result = repositoryStore.getClosedPull(end, start);
+      break;
     case 'open':
-      return repositoryStore.getOpenPull(end, start);
+      result = repositoryStore.getOpenPull(end, start);
+      break;
     case 'oldest':
-      return repositoryStore.getOldPull(end, start);
+      result = repositoryStore.getOldPull(end, start);
+      break;
     case 'default':
-      return repositoryStore.getFilteredPulls(end, start);
+      result = repositoryStore.getFilteredPulls(end, start);
+      break;
   }
+  return result;
 };
 const getMainData = async ({ owner, repo }: IDashboardQuery) => {
   loading.main = true;

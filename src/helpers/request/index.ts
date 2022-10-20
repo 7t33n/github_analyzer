@@ -19,4 +19,11 @@ const instance = axios.create({
   headers: getHeaders(),
 });
 
+const proxy = axios.create({
+  baseURL: '/',
+  timeout: 10000,
+  headers: getHeaders(),
+})
+
+export {proxy};
 export default instance;

@@ -20,12 +20,7 @@
         <dashboard-pull-item
           v-for="(item, index) in paginationList"
           :key="index"
-          :closed_at="item.closed_at"
-          :created_at="item.created_at"
-          :html_url="item.html_url"
-          :title="item.title"
-          :updated_at="item.updated_at"
-          :user="item.user"
+          :item="item"
           :type="props.activeItem.description"
         />
       </main>
@@ -39,16 +34,7 @@ import DashboardPullMenu from "@/components/views/pages/PagesDashboard/Dashboard
 import {computed} from "vue";
 
 const props = defineProps<{
-  list: {
-    title: string;
-    user: {
-      login: string;
-    };
-    html_url: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string;
-  }[];
+  list: IRepository[];
   menuList: IList;
   open: number;
   closed: number;

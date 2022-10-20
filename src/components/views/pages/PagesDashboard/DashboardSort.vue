@@ -29,6 +29,8 @@ const onClick = () => {
   cursor: pointer;
 
   &__icon {
+    width: 100%;
+    height: 100%;
     padding: 8px;
     border: 1px solid #fff;
     color: #fff;

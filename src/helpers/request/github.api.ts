@@ -1,8 +1,8 @@
-import instance from '@/helpers/request/index';
+import instance, {proxy} from '@/helpers/request/index';
 
 const signin = async (code: string): Promise<string> => {
-  const { data } = await instance.post(
-    'https://github.com/login/oauth/access_token/',
+  const { data } = await proxy.post(
+    '/login/oauth/access_token/',
     {
       client_id: import.meta.env.VITE_GITHUB_CLIENT_ID,
       client_secret: import.meta.env.VITE_GITHUB_CLIENT_SECRET,

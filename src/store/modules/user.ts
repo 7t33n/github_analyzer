@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia';
-import { IUser } from '@/types/store/user';
+import {IUser, IUserState} from '@/types/store/user';
 import { getUserData, signin } from '@/helpers/request/github.api';
 
 export const useUserStore = defineStore(
   'user',
   {
-    state: (): IUser => ({
+    state: (): IUserState => ({
       data: {},
       loading: false,
       access_token: '',

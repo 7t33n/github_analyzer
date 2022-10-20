@@ -1,5 +1,14 @@
 interface IRepository {
   default_branch?: string;
+  created_at?: number;
+  pushed_at?: number;
+  updated_at?: number;
+  closed_at?: number;
+  title?: string;
+  user?: {
+    login?: string;
+  };
+  html_url?: string;
 }
 
 interface IContributors {
