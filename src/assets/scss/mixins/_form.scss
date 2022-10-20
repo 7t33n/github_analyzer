@@ -1,0 +1,8 @@
+@mixin formWrapper {
+
+  border-top: 1px solid $border-primary;
+  border-radius: 6px;
+  background-color: $background-primary;
+  padding: 16px;
+  width: 308px;
+}

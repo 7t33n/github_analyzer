@@ -1,10 +1,21 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
+import {
+  createRouter, createWebHistory,
+  NavigationGuardNext, RouteLocationNormalized,
+} from 'vue-router';
+import middlewares from '@/helpers/router/middlewares';
+import {routes} from "@/router/routes";
 
-const routes: Readonly<RouteRecordRaw[]> = [
-  { path: '/', component: () => import('@/components/views/pages/index.vue'), },
-];
-
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+router.beforeEach((
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext,
+) => {
+  middlewares(to, from, next, router);
+});
+
+export default router;

@@ -1,10 +1,15 @@
-export {}
+import 'vue-router';
 
-import 'vue-router'
+export {};
+
+export type IMiddleware = (
+  (context: any) => void
+);
 
 declare module 'vue-router' {
   interface RouteMeta {
-    // is optional
-    layout?: string | 'default';
+    layout?: 'LayoutDefault';
+    isAuth?: boolean;
+    middleware?: IMiddleware | IMiddleware[];
   }
 }

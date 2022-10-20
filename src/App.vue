@@ -1,17 +1,14 @@
 <template>
-  <component :is="layout">
+  <router-layout>
     <router-view />
-  </component>
+  </router-layout>
 </template>
 <script setup lang="ts">
-import { useRoute } from "vue-router";
-import { shallowRef } from "vue";
+import {defineAsyncComponent} from "vue";
+import {useRoute} from 'vue-router';
 
 const route = useRoute();
-const layout = shallowRef('');
 
-import(`@/components/views/layout/${route.meta.layout || 'default'}.vue`)
-  .then(val => layout.value = val.default);
+const routerLayout = defineAsyncComponent(() => import(`./components/views/layout/${route.meta.layout || 'LayoutDefault'}.vue`));
 </script>
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
