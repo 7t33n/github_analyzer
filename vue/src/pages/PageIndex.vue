@@ -7,14 +7,16 @@
       <form-item
         title="Enter url"
       >
-        <app-input
-          v-model="formData.url"
-          type="select"
-          :datalist="repositoryStore.getReposName"
-          datalist-id="repoList"
-          @blur="onUrlBlur"
-          @input="onUrlInput"
-        />
+        <app-tooltip content="Это просто пиздец">
+          <app-input
+            v-model="formData.url"
+            type="select"
+            :datalist="repositoryStore.getReposName"
+            datalist-id="repoList"
+            @blur="onUrlBlur"
+            @input="onUrlInput"
+          />
+        </app-tooltip>
       </form-item>
       <form-item
         title="Analysis start date"
